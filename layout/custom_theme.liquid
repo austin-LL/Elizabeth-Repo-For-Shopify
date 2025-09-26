@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="relative">
+<html>
   <head>
     <title>{{ page_title }}</title>
     <meta charset="utf-8">
@@ -14,10 +14,9 @@
     {{ 'application.js' | asset_url | script_tag }}
   </head>
   {% section 'header' %}
-  <body class="relative">
+  <body>
     <main role="main">
       {{ content_for_layout }}
     </main>
   </body>
-  {% section 'footer' %}
 </html>

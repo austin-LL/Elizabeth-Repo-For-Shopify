@@ -1,11 +1,16 @@
 {% assign main_menu_linklist = linklists[section.settings.menu] %}
-
-<header class="relative bg-white shadow-lg">
+<header class="bg-white shadow-lg h-[var(--topOffset)] sticky top-0 z-50">
   <div class="mx-auto px-4 sm:px-6">
-    <div class="flex justify-between md:justify-center items-center py-6 md:justify-start md:space-x-10">
+    <div class="flex justify-between items-center py-6 md:justify-start md:space-x-10">
       <!-- STORE NAME / STORE LOGO -->
       <div class="flex justify-start lg:flex-1 truncate">
-        <h1 class="text-xl font-bold truncate">{{ shop.name }}</h1>
+        <a href="{{ shop.url }}" class="flex items-center">
+        {% if section.settings.menu_logo %}
+          <img src="{{ section.settings.menu_logo | image_url }}" alt="{{ section.settings.menu_logo.alt }}" width="{{ section.settings.menu_logo.width }}" height="{{ section.settings.menu_logo.height }}">
+        {% else %}
+          <p class="hdg-6 truncate">{{ shop.name }}</p>
+        {% endif %}
+        </a>
       </div>
 
       <!-- NAVIGATION MENU -->
@@ -124,6 +129,11 @@
   {
     "name": "Header",
     "settings": [
+      {
+        "type": "image_picker",
+        "id": "menu_logo",
+        "label": "Logo",
+      },
       {
         "type": "text",
         "id": "mobile_menu_title",

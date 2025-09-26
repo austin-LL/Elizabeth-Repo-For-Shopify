@@ -1,0 +1,50 @@
+<div class="h-[calc(100vh-var(--topOffset))] relative text-white flex items-end justify-start">
+  {% render 'fit-image', image: section.settings.image, classes: "after:absolute after:inset-0 after:bg-black/50" %}
+
+  <div class="relative container w-full z-10 my-20">
+    <div class="max-w-3xl">
+      <div class="wysiwyg text-left">
+        {{ section.settings.content }}
+
+        {% if section.settings.button_url != blank %}
+          <p>
+            <a href="{{ section.settings.button_url }}" class="btn-secondary is-white">{{ section.settings.button_text }}</a>
+          </p>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Hero Banner",
+    "settings": [
+      {
+        "type": "richtext",
+        "id": "content",
+        "label": "Content",
+      },
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Image",
+      },
+      {
+        "type": "text",
+        "id": "button_text",
+        "label": "Button Text",
+      },
+      {
+        "type": "url",
+        "id": "button_url",
+        "label": "Button URL",
+      }
+    ],
+    "presets": [
+      {
+        "name": "Hero Banner"
+      }
+    ]
+  }
+{% endschema %}

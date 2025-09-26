@@ -1,0 +1,60 @@
+:root {
+  --topOffset: 76px;
+}
+
+a {
+  transition: 0.15s ease;
+}
+
+button {
+  cursor: pointer;
+}
+
+.container {
+  padding-left: theme(spacing.8);
+  padding-right: theme(spacing.8);
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1110px;
+}
+
+.pagination {
+  .current,
+  span:not(.prev, .next) a:hover {
+    text-decoration: underline;
+  }
+
+  .prev a,
+  .next a {
+    display: inline-block;
+    padding: theme(spacing.3) theme(spacing.4);
+    background-color: theme(colors.blue.500);
+    color: theme(colors.white);
+    border-radius: theme(borderRadius.lg);
+    font-size: theme(fontSize.sm);
+    font-weight: theme(fontWeight.medium);
+    line-height: theme(lineHeight.tight);
+    text-align: center;
+    transition: 0.25s ease;
+
+    &:hover {
+      background-color: theme(colors.blue.600);
+    }
+  }
+}
+
+.fit-image {
+  position: absolute;
+  inset: 0;
+  background-repeat: no-repeat;
+
+  img,
+  svg {
+    height: theme(height.full);
+    width: theme(width.full);
+  }
+}
+
+section.bg-white:not(.ignore-bg) + section.bg-white:not(.ignore-bg) {
+  padding-top: 0;
+}

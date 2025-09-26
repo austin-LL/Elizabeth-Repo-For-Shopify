@@ -1,0 +1,7 @@
+{% if pagination.pages > 0 %}
+  <div class="max-w-6xl mx-auto mt-8">
+    <nav class="flex items-center justify-center gap-x-5 pagination" role="navigation" aria-label="Pagination Navigation">
+      {{ pagination | default_pagination }}
+    </nav>
+  </div>
+{% endif %}

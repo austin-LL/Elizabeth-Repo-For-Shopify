@@ -1,0 +1,58 @@
+{% assign collection_title = section.settings.collection_title | default: collection.title %}
+
+{% paginate collection.products by section.settings.products_per_page %}
+  <div class="py-12 bg-gray-100">
+    <div class="text-center container wysiwyg">
+      <h1 class="hdg-2">{{ collection_title }}</h1>
+
+      <a href="{{ routes.collections_url }}" class="btn inline-flex items-center gap-x-2"><span class="mr-1">&laquo;</span> Back to Collections</a>
+    </div>
+  </div>
+
+  <div class="py-12">
+    <div class="container">
+      <div class="grid grid-cols-3 gap-8">
+        {% for product in collection.products %}
+          {%
+            render 'product-card',
+            {
+              _product: product,
+              placeholder: 'product-1',
+              display_vendor: section.settings.display_vendor
+            }
+          %}
+        {% else %}
+          <p class="col-span-3 text-center">There are no products in this collection.</p>
+        {% endfor %}
+      </div>
+
+      {% render 'pagination', pagination: paginate %}
+    </div>
+  </div>
+{% endpaginate %}
+
+{% schema %}
+  {
+    "name": "Template Collection",
+    "settings": [
+      {
+        "type": "text",
+        "label": "Collection Title",
+        "id": "collection_title",
+      },
+      {
+        "type": "range",
+        "label": "Products Per Page",
+        "id": "products_per_page",
+        "default": 6,
+        "min": 1,
+        "max": 12,
+      },
+      {
+        "type": "checkbox",
+        "label": "Display Vendor in Product Card",
+        "id": "display_vendor",
+      }
+    ]
+  }
+{% endschema %}

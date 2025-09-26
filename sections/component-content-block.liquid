@@ -1,0 +1,39 @@
+<div class="py-16 bg-white">
+  <div class="container">
+    <div class="{{ section.settings.width }} mx-auto">
+      <div class="wysiwyg">
+        {{ section.settings.content }}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Content Block",
+    "settings": [
+      {
+        "type": "richtext",
+        "id": "content",
+        "label": "Content",
+      },
+      {
+        "type": "select",
+        "id": "width",
+        "label": "Width",
+        "options": [
+          { "value": "w-full md:w-10/12 lg:w-8/12 xl:w-6/12", "label": "6 of 12 Columns" },
+          { "value": "w-full lg:w-10/12 xl:w-8/12", "label": "8 of 12 Columns" },
+          { "value": "w-full xl:w-10/12", "label": "10 of 12 Columns" },
+          { "value": "w-full", "label": "12 of 12 Columns" }
+        ],
+        "default": "w-full"
+      },
+    ],
+    "presets": [
+      {
+        "name": "Content Block"
+      }
+    ]
+  }
+{% endschema %}

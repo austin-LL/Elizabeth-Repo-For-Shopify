@@ -1,0 +1,40 @@
+<div class="flex items-center justify-center h-[calc(100vh-var(--topOffset))]">
+  <div class="text-center">
+    <h1 class="text-6xl font-bold mb-4">{{ section.settings.title }}</h1>
+    <p class="text-xl mb-8">{{ section.settings.subtext_title }}</p>
+    {% if section.settings.button_text != blank %}
+      <a href="{{ section.settings.button_url }}" class="inline-block px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">{{ section.settings.button_text }}</a>
+    {% endif %}
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Template 404",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "404 Heading Title",
+        "default": "404"
+      },
+      {
+        "type": "text",
+        "id": "subtext_title",
+        "label": "404 Subtext Title",
+        "default": "The page that you're looking for is not found."
+      },
+      {
+        "type": "url",
+        "id": "button_url",
+        "label": "Button URL",
+        "default": "/"
+      },
+      {
+        "type": "text",
+        "id": "button_text",
+        "label": "Button Text",
+      }
+    ],
+  }
+{% endschema %}

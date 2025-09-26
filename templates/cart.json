@@ -1,0 +1,29 @@
+{
+  "name": "Template Cart",
+  "sections": {
+    "template": {
+      "type": "template-cart",
+      "blocks": {
+        "subtotal": {
+          "type": "subtotal",
+          "title": "Subtotal",
+          "currency": "USD",
+        },
+        "update_button": {
+          "type": "update_button",
+        },
+        "checkout_button": {
+          "type": "checkout_button",
+        }
+      },
+      "block_order": [
+        "subtotal",
+        "update_button",
+        "checkout_button"
+      ]
+    }
+  },
+  "order": [
+    "template"
+  ]
+}

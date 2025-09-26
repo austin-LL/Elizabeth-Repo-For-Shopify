@@ -1,0 +1,40 @@
+{% assign collection_title = section.settings.collection_title | default: "All Collections" %}
+
+<div class="py-12 bg-gray-100">
+  <div class="container">
+    <h1 class="text-center hdg-2">{{ collection_title }}</h1>
+  </div>
+</div>
+
+<div class="py-12">
+  <div class="container">
+    <div class="grid grid-cols-3 gap-8">
+      {% for collection in collections %}
+        {% unless collection.title == "Home page" or collection.products_count == 0 %}
+          {%
+            render 'collection-card',
+            {
+              _collection: collection,
+              placeholder: 'product-1',
+            }
+          %}
+        {% endunless %}
+      {% else %}
+        <p class="col-span-3 text-center">There are no collections.</p>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Template List Collections",
+    "settings": [
+      {
+        "type": "text",
+        "label": "Collection Title",
+        "id": "collection_title",
+      },
+    ]
+  }
+{% endschema %}

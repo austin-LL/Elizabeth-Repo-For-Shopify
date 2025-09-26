@@ -1,0 +1,28 @@
+<div class="bg-gray-100 border border-gray-400 relative flex-col group {{ classes }}">
+  <div class="flex-initial overflow-hidden">
+    <div class="image-wrapper group-hover:scale-110 duration-200 aspect-4/3 relative">
+      {% if _collection.featured_image != blank %}
+        {% assign featured_image = _collection.featured_image %}
+      {% else %}
+        {% assign featured_image = _collection.products.first.featured_image %}
+      {% endif %}
+      {% render 'fit-image', image: featured_image, placeholder: 'collection-1' %}
+    </div>
+  </div>
+
+  <div class="p-6 flex-1 flex flex-col items-start justify-between gap-y-5">
+    <div class="flex-initial">
+      {% if display_vendor != blank %}
+        <p class="text-gray-500 mb-1 paragraph-small">{{ _collection.vendor }}</p>
+      {% endif %}
+
+      <h2 class="paragraph-large font-semibold mb-1">{{ _collection.title }}</h2>
+
+      <p class="paragraph-default">{{ _collection.price | money }}</p>
+    </div>
+
+    <a href="{{ _collection.url }}" class="inline-flex items-center gap-x-2 hover:underline before:absolute before:inset-0 btn">
+      View collection
+    </a>
+  </div>
+</div>

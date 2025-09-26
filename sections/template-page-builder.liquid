@@ -1,0 +1,86 @@
+{% comment %}
+This section acts as a flexible page builder.
+Each block type = a reusable content chunk (hero, text + image, FAQ, etc.).
+Merchants can add/remove/reorder blocks per page.
+{% endcomment %}
+
+<div class="page-builder">
+  {% for block in section.blocks %}
+    <div class="page-block page-block--{{ block.type }}">
+      {% case block.type %}
+
+        {% when 'hero' %}
+          <section class="hero">
+            {% if block.settings.image %}
+              <img
+                src="{{ block.settings.image | image_url: width: 1600 }}"
+                alt="{{ block.settings.heading | escape }}"
+                width="{{ block.settings.image.width }}"
+                height="{{ block.settings.image.height }}"
+              >
+            {% endif %}
+            <h1>{{ block.settings.heading }}</h1>
+          </section>
+
+        {% when 'text_image' %}
+          <section class="text-image">
+            <div class="text">{{ block.settings.text }}</div>
+            {% if block.settings.image %}
+              <div class="image">
+                <img
+                  src="{{ block.settings.image | image_url: width: 800 }}"
+                  alt=""
+                  width="{{ block.settings.image.width }}"
+                  height="{{ block.settings.image.height }}"
+                >
+              </div>
+            {% endif %}
+          </section>
+
+        {% when 'faq' %}
+          <section class="faq">
+            <h3>{{ block.settings.question }}</h3>
+            <div class="answer">{{ block.settings.answer }}</div>
+          </section>
+
+      {% endcase %}
+    </div>
+  {% endfor %}
+</div>
+
+{% schema %}
+{
+  "name": "Page Builder",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "hero",
+      "name": "Hero section",
+      "settings": [
+        { "id": "heading", "type": "text", "label": "Heading" },
+        { "id": "image", "type": "image_picker", "label": "Image" }
+      ]
+    },
+    {
+      "type": "text_image",
+      "name": "Text + Image",
+      "settings": [
+        { "id": "text", "type": "richtext", "label": "Text" },
+        { "id": "image", "type": "image_picker", "label": "Image" }
+      ]
+    },
+    {
+      "type": "faq",
+      "name": "FAQ block",
+      "settings": [
+        { "id": "question", "type": "text", "label": "Question" },
+        { "id": "answer", "type": "richtext", "label": "Answer" }
+      ]
+    }
+  ],
+  "max_blocks": 20,
+  "presets": [
+    { "name": "Flexible Page" }
+  ]
+}
+{% endschema %}

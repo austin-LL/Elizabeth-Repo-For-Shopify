@@ -1,0 +1,18 @@
+{
+  "sections": {
+    "featured-collection": {
+      "type": "component-featured-collection",
+    },
+    "hero-banner": {
+      "type": "component-hero-banner",
+    },
+    "content-block": {
+      "type": "component-content-block",
+    }
+  },
+  "order": [
+    "hero-banner",
+    "content-block",
+    "featured-collection"
+  ]
+}

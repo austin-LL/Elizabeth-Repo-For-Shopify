@@ -1,0 +1,213 @@
+.wysiwyg h1:not([class*="hdg-"]),
+.hdg-1 {
+  font-size: theme(fontSize.7xl);
+  line-height: theme(lineHeight.tight);
+  font-weight: 700;
+}
+
+.wysiwyg h2:not([class*="hdg-"]),
+.hdg-2 {
+  font-size: theme(fontSize.6xl);
+  line-height: theme(lineHeight.tight);
+  font-weight: 700;
+}
+
+.wysiwyg h3:not([class*="hdg-"]),
+.hdg-3 {
+  font-size: theme(fontSize.4xl);
+  line-height: theme(lineHeight.tight);
+  font-weight: 700;
+}
+
+.wysiwyg h4:not([class*="hdg-"]),
+.hdg-4 {
+  font-size: theme(fontSize.3xl);
+  line-height: theme(lineHeight.tight);
+  font-weight: 700;
+}
+
+.wysiwyg h5:not([class*="hdg-"]),
+.hdg-5 {
+  font-size: theme(fontSize.2xl);
+  line-height: theme(lineHeight.snug);
+  font-weight: 700;
+}
+
+.wysiwyg h6:not([class*="hdg-"]),
+.hdg-6 {
+  font-size: theme(fontSize.xl);
+  line-height: theme(lineHeight.normal);
+  font-weight: 700;
+}
+
+.paragraph-default {
+  font-size: theme(fontSize.base);
+  line-height: theme(lineHeight.relaxed);
+}
+
+.paragraph-large {
+  font-size: theme(fontSize.lg);
+  line-height: theme(lineHeight.normal);
+}
+
+.paragraph-small {
+  font-size: theme(fontSize.sm);
+  line-height: theme(lineHeight.normal);
+}
+
+.paragraph-xsmall {
+  font-size: theme(fontSize.xs);
+  line-height: theme(lineHeight.normal);
+}
+
+:where(.wysiwyg, #tinymce, .gform_confirmation_message) {
+  /*
+   * zero out margins for first and
+   * last elements within a WYSIWYG
+   * to remove any unwanted vertical spacing
+   */
+  & > *:first-child {
+    &:not([class*="mt-"]) {
+      margin-top: theme(margin.0) !important;
+    }
+  }
+
+  & > *:last-child {
+    &:not([class*="mb-"]) {
+      margin-bottom: theme(margin.0) !important;
+    }
+  }
+
+  /*
+   * set defaults to elements in the WYSIWYG that
+   * do not have a style format/class applied to them. Notice that
+   * by default, bottom margins get set. It's best to set bottom margin
+   * rules for the WYSIWYG wrapper and explicitely set bottom margins using
+   * utlities elswhere.
+   */
+  a:not([class*="hdg-"], [class*="paragraph-"], [class*="btn"]) {
+    text-decoration: underline;
+    color: theme(colors.blue.400);
+
+    &:hover, &:active, &:focus {
+      text-decoration: none;
+    }
+  }
+
+  :not([class*="hdg-"], [class*="paragraph-"], [class*="gform_"]) {
+    &:where(p) {
+      @extend .paragraph-default;
+    }
+
+    &:where(h1) {
+      @extend .hdg-1;
+    }
+
+    &:where(h2) {
+      @extend .hdg-2;
+    }
+
+    &:where(h3) {
+      @extend .hdg-3;
+    }
+
+    &:where(h4) {
+      @extend .hdg-4;
+    }
+
+    &:where(h5) {
+      @extend .hdg-5;
+    }
+
+    &:where(h6) {
+      @extend .hdg-6;
+    }
+
+    &:where(li) {
+      @extend .paragraph-default;
+    }
+  }
+
+  ul:not(.lined-list),
+  ol {
+    padding-left: theme(spacing.5);
+    margin-bottom: theme(spacing.5);
+
+    li {
+      &:not(:last-child) {
+        &:not([class*="mb-"]) {
+          margin-bottom: theme(spacing.1);
+        }
+      }
+
+      &:last-child {
+        margin-bottom: theme(margin.0);
+      }
+    }
+  }
+
+
+  /*
+   * Set default list styles back to disk
+   * and number
+   */
+  ul:not(.lined-list) {
+    list-style-type: theme(listStyleType.disc);
+  }
+
+  ol {
+    list-style-type: theme(listStyleType.decimal);
+  }
+
+  /*
+   * If you need to add any extra styling to specific
+   * text classes, add them here. For instance, when coming
+   * from the WYSIWYG, .hdg-1 needs a specific bottom margin
+   * no matter what element it is applied to.
+   */
+  :not([class*="mb-"]) {
+    &:where( .paragraph-default, p ) {
+      margin-bottom: theme(spacing.5);
+    }
+
+    &:where( .hdg-hero ) {
+      margin-bottom: theme(spacing.5);
+    }
+
+    &:where( .hdg-1, h1 ) {
+      margin-bottom: theme(spacing.5);
+    }
+
+    &:where( .hdg-2, h2 ) {
+      margin-bottom: theme(spacing.5);
+    }
+
+    &:where( .hdg-3, h3 ) {
+      margin-bottom: theme(spacing.5);
+    }
+
+    &:where( .hdg-4, h4 ) {
+      margin-bottom: theme(spacing.5);
+    }
+
+    &:where( .hdg-5, h5 ) {
+      margin-bottom: theme(spacing.5);
+    }
+
+    &:where( .hdg-6, h6 ) {
+      margin-bottom: theme(spacing.5);
+    }
+
+    &:where( .paragraph-large ) {
+      margin-bottom: theme(spacing.5);
+    }
+
+    &:where( .paragraph-small ) {
+      margin-bottom: theme(spacing.5);
+    }
+
+    &:where( .paragraph-xsmall ) {
+      margin-bottom: theme(spacing.5);
+    }
+  }
+}

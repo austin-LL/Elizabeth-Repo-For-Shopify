@@ -1,0 +1,11 @@
+{
+  "name": "Template Page Builder",
+  "sections": {
+    "template": {
+      "type": "template-page-builder"
+    }
+  },
+  "order": [
+    "template"
+  ]
+}

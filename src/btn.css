@@ -1,0 +1,46 @@
+.btn {
+  display: inline-block;
+  padding: theme(spacing.3) theme(spacing.4);
+  background-color: theme(colors.blue.500);
+  color: theme(colors.white);
+  border-radius: theme(borderRadius.lg);
+  font-size: theme(fontSize.sm);
+  font-weight: theme(fontWeight.medium);
+  line-height: theme(lineHeight.tight);
+  text-align: center;
+  transition: 0.25s ease;
+
+  &:hover {
+    background-color: theme(colors.blue.600);
+    text-decoration: none;
+  }
+}
+
+.btn-secondary {
+  display: inline-block;
+  padding: theme(spacing.3) theme(spacing.4);
+  border: 1px solid theme(colors.blue.500);
+  color: theme(colors.blue.500);
+  border-radius: theme(borderRadius.lg);
+  font-size: theme(fontSize.sm);
+  font-weight: theme(fontWeight.medium);
+  line-height: theme(lineHeight.tight);
+  text-align: center;
+  transition: 0.25s ease;
+
+  &:hover {
+    background-color: theme(colors.blue.500);
+    color: theme(colors.white);
+    text-decoration: none;
+  }
+
+  &.is-white {
+    border-color: theme(colors.white);
+    color: theme(colors.white);
+
+    &:hover {
+      background-color: theme(colors.white);
+      color: theme(colors.blue.500);
+    }
+  }
+}
